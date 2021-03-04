@@ -23,7 +23,7 @@ namespace AnimalCountingDatabase.Tests
             // Create DB Context 
             var configuration = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
-                .AddEnviromentVariables()
+                .AddEnvironmentVariables()
                 .Build();
 
             var optionsBuilder = new DbContextOptionsBuilder<CustomerContext>();
