@@ -20,10 +20,21 @@ jobs:
       with:
         dotnet-version: '5.0.x'
 
+    - name: Start SQL Server
+      run: | 
+        docker run -d -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Pass~W0rd' -e 'MSSQL_PID=Express' -p 1433:1433 -d mcr.microsoft.com/mssql/server:latest
+
+    -name: Sleep for 5 Seconds
+      uses: jakejarvis/wait-action@master
+      with:
+        time: '5s'
+
     - name: Build with dotnet
       run: dotnet build --configuration Release
 
     - name: Run Automated Tests
+      env:
+        ConnectionStrings__DefaultConnection: "Server=localhost;Database=CiCDDemo_Test;User=sa;password=Pass~W0rd"
       run: dotnet test -c Release --no-build
 
     - name: dotnet publish
