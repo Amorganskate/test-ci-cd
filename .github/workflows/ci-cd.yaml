@@ -2,7 +2,8 @@ name: Continuous Integration and Deployment
 
 on:
   push:
-    - master
+    branches:
+      - master
 
 jobs:
   build:
