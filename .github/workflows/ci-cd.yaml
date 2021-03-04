@@ -7,7 +7,7 @@ on:
 
 env:
   DOTNET_VERSION: '5.0.x'
-  AZURE_WEBAPP_NAME: TestFirstAzureTest
+  AZURE_WEBAPP_NAME: testfirstazuretest
 
 jobs:
   build:
@@ -36,6 +36,6 @@ jobs:
       - name: Deploy to Azure Web Apps
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'testfirstazuretest'
+          app-name: '${{ env.AZURE_WEBAPP_NAME }}'
           public-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_SECRET }}
           package: ./out
