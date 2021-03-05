@@ -40,10 +40,10 @@ jobs:
     - name: dotnet publish
       run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
-    - name: Deploy to Azure Web App
-      uses: azure/webapps-deploy@v2
-      with:
-        app-name: 'testfirstazuretest'
-        slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_798e95ed96dd4029918c922dfaff6b3a }}
-        package: ${{env.DOTNET_ROOT}}/myapp 
+    # - name: Deploy to Azure Web App
+    #   uses: azure/webapps-deploy@v2
+    #   with:
+    #     app-name: 'testfirstazuretest'
+    #     slot-name: 'production'
+    #     publish-profile: ${{ secrets.AzureAppService_PublishProfile_798e95ed96dd4029918c922dfaff6b3a }}
+    #     package: ${{env.DOTNET_ROOT}}/myapp 
